@@ -1,0 +1,73 @@
+category,skill,slug
+Programming & Software Engineering,Python,python
+Programming & Software Engineering,JavaScript,javascript
+Programming & Software Engineering,TypeScript,typescript
+Programming & Software Engineering,Java,java
+Programming & Software Engineering,C++,cpp
+Programming & Software Engineering,SQL,sql
+Programming & Software Engineering,HTML & CSS,html-css
+Programming & Software Engineering,React,react
+Programming & Software Engineering,Node.js,nodejs
+Programming & Software Engineering,Git & Version Control,git
+Programming & Software Engineering,REST APIs,rest-apis
+Programming & Software Engineering,Relational Databases,relational-databases
+Programming & Software Engineering,Software Testing,software-testing
+Programming & Software Engineering,System Design,system-design
+Programming & Software Engineering,Object-Oriented Programming,oop
+Programming & Software Engineering,Data Structures & Algorithms,dsa
+Programming & Software Engineering,Mobile Development,mobile-development
+Data & Analytics,Statistics,statistics
+Data & Analytics,Data Analysis,data-analysis
+Data & Analytics,Data Visualization,data-visualization
+Data & Analytics,Spreadsheets (Excel/Sheets),spreadsheets
+Data & Analytics,Data Cleaning & Wrangling,data-cleaning
+Data & Analytics,Exploratory Data Analysis,eda
+Data & Analytics,Business Intelligence (Power BI/Tableau),business-intelligence
+Data & Analytics,Data Storytelling,data-storytelling
+Data & Analytics,A/B Testing & Experimentation,ab-testing
+Machine Learning & AI,Machine Learning,machine-learning
+Machine Learning & AI,Deep Learning,deep-learning
+Machine Learning & AI,Natural Language Processing,nlp
+Machine Learning & AI,Computer Vision,computer-vision
+Machine Learning & AI,Model Deployment & MLOps,mlops
+Machine Learning & AI,Feature Engineering,feature-engineering
+Machine Learning & AI,Model Evaluation,model-evaluation
+Machine Learning & AI,PyTorch / TensorFlow,dl-frameworks
+Machine Learning & AI,Large Language Models,llms
+Machine Learning & AI,Prompt Engineering,prompt-engineering
+Machine Learning & AI,Generative AI,generative-ai
+Design & UX,UI Design,ui-design
+Design & UX,UX Research,ux-research
+Design & UX,Wireframing & Prototyping,wireframing
+Design & UX,Figma,figma
+Design & UX,Design Systems,design-systems
+Design & UX,Interaction Design,interaction-design
+Design & UX,Usability Testing,usability-testing
+Design & UX,Information Architecture,information-architecture
+Design & UX,Visual & Graphic Design,visual-design
+Design & UX,User Journey Mapping,user-journey-mapping
+Marketing & Growth,Digital Marketing,digital-marketing
+Marketing & Growth,Content Marketing,content-marketing
+Marketing & Growth,SEO,seo
+Marketing & Growth,Social Media Marketing,social-media-marketing
+Marketing & Growth,Email Marketing,email-marketing
+Marketing & Growth,Copywriting,copywriting
+Marketing & Growth,Paid Advertising (Google/Meta Ads),paid-advertising
+Marketing & Growth,Marketing Analytics,marketing-analytics
+Marketing & Growth,Google Analytics,google-analytics
+Marketing & Growth,Brand Strategy,brand-strategy
+Marketing & Growth,CRM Tools,crm-tools
+Tools & Platforms,Jupyter Notebooks,jupyter
+Tools & Platforms,Cloud Platforms (AWS/GCP/Azure),cloud-platforms
+Tools & Platforms,Docker,docker
+Tools & Platforms,Linux & Command Line,linux-cli
+Professional & Soft Skills,Communication,communication
+Professional & Soft Skills,Teamwork & Collaboration,teamwork
+Professional & Soft Skills,Problem Solving,problem-solving
+Professional & Soft Skills,Critical Thinking,critical-thinking
+Professional & Soft Skills,Leadership,leadership
+Professional & Soft Skills,Project Management,project-management
+Professional & Soft Skills,Presentation Skills,presentation-skills
+Professional & Soft Skills,Time Management,time-management
+Professional & Soft Skills,Stakeholder Management,stakeholder-management
+Professional & Soft Skills,Adaptability,adaptability

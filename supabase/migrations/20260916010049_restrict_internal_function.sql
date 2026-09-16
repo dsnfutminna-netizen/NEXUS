@@ -1,0 +1,11 @@
+revoke execute on function public.rls_auto_enable() from public, anon, authenticated;
+create index if not exists idx_feedback_student_id on public.feedback(student_id);
+create index if not exists idx_opportunities_created_by on public.opportunities(created_by);
+create index if not exists idx_opportunity_careers_career_id on public.opportunity_careers(career_id);
+create index if not exists idx_opportunity_departments_department_id on public.opportunity_departments(department_id);
+create index if not exists idx_recommendations_skill_id on public.recommendations(skill_id);
+create index if not exists idx_saved_opportunities_opportunity_id on public.saved_opportunities(opportunity_id);
+create index if not exists idx_student_interests_industry_id on public.student_interests(industry_id);
+create index if not exists idx_student_skills_proficiency_rank on public.student_skills(proficiency_rank);
+create index if not exists idx_career_required_skills_target_rank on public.career_required_skills(target_rank);
+grant usage on sequence public.recommendations_id_seq to authenticated;

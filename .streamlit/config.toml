@@ -1,0 +1,27 @@
+[theme]
+base = "light"
+primaryColor = "#126B45"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F2F7F4"
+textColor = "#18382B"
+font = "sans serif"
+greenColor = "#126B45"
+greenBackgroundColor = "#EAF5EE"
+greenTextColor = "#145332"
+blueColor = "#126B45"
+blueBackgroundColor = "#EAF5EE"
+blueTextColor = "#145332"
+redColor = "#B42332"
+redBackgroundColor = "#FCEDEF"
+redTextColor = "#8A1825"
+yellowColor = "#B42332"
+yellowBackgroundColor = "#FCEDEF"
+yellowTextColor = "#8A1825"
+linkColor = "#126B45"
+borderColor = "#D5E2DA"
+
+[client]
+toolbarMode = "viewer"
+
+[browser]
+gatherUsageStats = false

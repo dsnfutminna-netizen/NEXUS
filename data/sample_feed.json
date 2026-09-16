@@ -1,0 +1,86 @@
+[
+  {
+    "external_id": "sample-001",
+    "title": "Data Analyst Intern (Remote)",
+    "organization": "BrightData Africa",
+    "url": "https://example.org/opps/data-analyst-intern",
+    "location": "Remote (Nigeria)",
+    "posted_at": "2026-09-01",
+    "deadline": "2026-10-15",
+    "is_remote": 1,
+    "tags": ["internship", "data", "sql", "excel"],
+    "description": "We are looking for a Data Analyst Intern to join our analytics team. You will clean and analyse data, build dashboards, and present findings to stakeholders. Requirements: strong SQL, comfort with Microsoft Excel and Google Sheets, some Python for data analysis, and an eye for data visualization. Experience with statistics and Power BI or Tableau is a plus. Great communication skills are essential."
+  },
+  {
+    "external_id": "sample-002",
+    "title": "Junior Machine Learning Engineer",
+    "organization": "NeuralStack",
+    "url": "https://example.org/opps/junior-ml-engineer",
+    "location": "Remote",
+    "posted_at": "2026-09-03",
+    "deadline": "2026-10-20",
+    "is_remote": 1,
+    "tags": ["junior", "machine learning", "python", "pytorch"],
+    "description": "Join us as a Junior Machine Learning Engineer. You'll train deep learning models with PyTorch and TensorFlow, work on NLP problems, and help with model deployment and MLOps using Docker on AWS. We value solid Python, an understanding of machine learning fundamentals, model evaluation, and version control with Git."
+  },
+  {
+    "external_id": "sample-003",
+    "title": "Frontend Developer Intern",
+    "organization": "PixelForge",
+    "url": "https://example.org/opps/frontend-intern",
+    "location": "Lagos, Nigeria",
+    "posted_at": "2026-09-05",
+    "deadline": "2026-10-10",
+    "is_remote": 0,
+    "tags": ["internship", "frontend", "react"],
+    "description": "Frontend Developer Intern wanted. Build responsive web interfaces with JavaScript and React. You should know HTML and CSS well, be comfortable with Git and GitHub, and be able to consume a REST API. Bonus: unit testing and TypeScript. You'll work in an agile team and grow your problem solving skills."
+  },
+  {
+    "external_id": "sample-004",
+    "title": "Product Design Intern (UI/UX)",
+    "organization": "Studio Kito",
+    "url": "https://example.org/opps/product-design-intern",
+    "location": "Remote (Africa)",
+    "posted_at": "2026-09-06",
+    "deadline": "2026-10-25",
+    "is_remote": 1,
+    "tags": ["internship", "design", "figma"],
+    "description": "We're hiring a Product Design Intern. You'll do UX research, create wireframes and prototypes in Figma, and run usability testing. A grasp of UI design, interaction design, and design systems is important. Strong communication and presentation skills will help you share your work with stakeholders."
+  },
+  {
+    "external_id": "sample-005",
+    "title": "Growth Marketing Intern",
+    "organization": "Kudi Growth",
+    "url": "https://example.org/opps/growth-marketing-intern",
+    "location": "Remote (Nigeria)",
+    "posted_at": "2026-09-07",
+    "deadline": "2026-10-18",
+    "is_remote": 1,
+    "tags": ["internship", "marketing", "seo"],
+    "description": "Growth Marketing Intern to run campaigns end to end. You'll work on SEO, social media marketing, and content marketing, write copy, and track performance with Google Analytics. Experience with email marketing (Mailchimp) and paid ads is a plus. You should enjoy marketing analytics and have strong communication skills."
+  },
+  {
+    "external_id": "sample-006",
+    "title": "Data Science Fellowship (Graduate Programme)",
+    "organization": "Sahara Analytics Institute",
+    "url": "https://example.org/opps/data-science-fellowship",
+    "location": "Remote",
+    "posted_at": "2026-09-02",
+    "deadline": "2026-11-01",
+    "is_remote": 1,
+    "tags": ["fellowship", "graduate", "data science"],
+    "description": "A 6-month Data Science Fellowship for recent graduates. Learn and apply Python, statistics, machine learning, and data analysis on real projects. You'll practise exploratory data analysis, feature engineering, and data storytelling, and present insights with strong communication. Basic SQL and Jupyter notebooks required."
+  },
+  {
+    "external_id": "sample-007",
+    "title": "Cloud & Software Development Scholarship for Students",
+    "organization": "Open Futures Foundation",
+    "url": "https://example.org/opps/cloud-dev-scholarship",
+    "location": "Nigeria",
+    "posted_at": "2026-09-04",
+    "deadline": "2026-10-30",
+    "is_remote": 1,
+    "tags": ["scholarship", "students", "cloud"],
+    "description": "Fully funded scholarship for students to build software development skills. Covers programming fundamentals, data structures and algorithms, object-oriented programming, Git, and an introduction to cloud computing on AWS and Linux command line. Open to undergraduates with a passion for technology and problem solving."
+  }
+]

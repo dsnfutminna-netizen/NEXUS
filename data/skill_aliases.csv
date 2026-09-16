@@ -1,0 +1,224 @@
+skill_slug,alias
+javascript,js
+javascript,ecmascript
+typescript,type script
+cpp,c++
+cpp,cplusplus
+sql,structured query language
+sql,t-sql
+sql,pl/sql
+html-css,html
+html-css,css
+html-css,html5
+html-css,css3
+react,reactjs
+react,react.js
+react,react js
+nodejs,node.js
+nodejs,nodejs
+nodejs,node js
+git,github
+git,gitlab
+git,version control
+git,source control
+rest-apis,restful
+rest-apis,rest api
+rest-apis,restful api
+rest-apis,api development
+relational-databases,postgresql
+relational-databases,postgres
+relational-databases,mysql
+relational-databases,mariadb
+relational-databases,rdbms
+relational-databases,relational database
+software-testing,unit testing
+software-testing,test automation
+software-testing,pytest
+software-testing,jest
+software-testing,selenium
+software-testing,tdd
+system-design,system design
+system-design,distributed systems
+system-design,microservices
+system-design,scalability
+oop,object-oriented
+oop,object oriented
+dsa,data structures
+dsa,algorithms
+dsa,data structures and algorithms
+mobile-development,android
+mobile-development,ios
+mobile-development,react native
+mobile-development,flutter
+mobile-development,mobile app
+statistics,statistical
+statistics,hypothesis testing
+statistics,probability
+data-analysis,data analysis
+data-analysis,data analyst
+data-visualization,data visualization
+data-visualization,data viz
+data-visualization,matplotlib
+data-visualization,seaborn
+data-visualization,plotly
+spreadsheets,ms excel
+spreadsheets,google sheets
+spreadsheets,microsoft excel
+data-cleaning,data cleaning
+data-cleaning,data wrangling
+data-cleaning,data preprocessing
+data-cleaning,etl
+eda,exploratory data analysis
+business-intelligence,power bi
+business-intelligence,powerbi
+business-intelligence,tableau
+business-intelligence,looker
+business-intelligence,business intelligence
+data-storytelling,data storytelling
+data-storytelling,storytelling with data
+ab-testing,a/b testing
+ab-testing,ab testing
+ab-testing,experimentation
+machine-learning,machine learning
+machine-learning,ml
+machine-learning,scikit-learn
+machine-learning,sklearn
+machine-learning,scikit learn
+machine-learning,supervised learning
+machine-learning,predictive modeling
+deep-learning,deep learning
+deep-learning,neural network
+deep-learning,neural networks
+deep-learning,cnn
+deep-learning,rnn
+deep-learning,transformer
+nlp,natural language processing
+nlp,text mining
+nlp,spacy
+computer-vision,computer vision
+computer-vision,opencv
+computer-vision,object detection
+computer-vision,image classification
+mlops,mlops
+mlops,ml ops
+mlops,model deployment
+mlops,model serving
+mlops,mlflow
+feature-engineering,feature engineering
+feature-engineering,feature selection
+model-evaluation,model evaluation
+model-evaluation,cross-validation
+model-evaluation,cross validation
+dl-frameworks,pytorch
+dl-frameworks,tensorflow
+dl-frameworks,keras
+llms,large language models
+llms,llm
+llms,gpt
+llms,openai
+llms,langchain
+prompt-engineering,prompt engineering
+prompt-engineering,prompting
+generative-ai,generative ai
+generative-ai,gen ai
+generative-ai,genai
+generative-ai,stable diffusion
+ui-design,ui design
+ui-design,user interface
+ui-design,ui/ux
+ux-research,ux research
+ux-research,user research
+ux-research,user interviews
+wireframing,wireframing
+wireframing,prototyping
+wireframing,wireframes
+figma,figma
+figma,sketch
+figma,adobe xd
+design-systems,design system
+design-systems,component library
+interaction-design,interaction design
+usability-testing,usability testing
+usability-testing,usability
+information-architecture,information architecture
+visual-design,visual design
+visual-design,graphic design
+visual-design,typography
+user-journey-mapping,user journey
+user-journey-mapping,journey mapping
+user-journey-mapping,user flows
+digital-marketing,digital marketing
+digital-marketing,online marketing
+content-marketing,content marketing
+content-marketing,content creation
+content-marketing,content strategy
+seo,seo
+seo,search engine optimization
+seo,sem
+social-media-marketing,social media
+social-media-marketing,social media marketing
+social-media-marketing,smm
+email-marketing,email marketing
+email-marketing,mailchimp
+email-marketing,email campaigns
+copywriting,copywriting
+copywriting,copy writing
+copywriting,ad copy
+paid-advertising,paid ads
+paid-advertising,google ads
+paid-advertising,meta ads
+paid-advertising,facebook ads
+paid-advertising,ppc
+marketing-analytics,marketing analytics
+marketing-analytics,conversion tracking
+google-analytics,google analytics
+google-analytics,ga4
+brand-strategy,brand strategy
+brand-strategy,branding
+crm-tools,crm
+crm-tools,hubspot
+crm-tools,salesforce
+jupyter,jupyter
+jupyter,jupyter notebook
+jupyter,google colab
+jupyter,colab
+cloud-platforms,aws
+cloud-platforms,gcp
+cloud-platforms,azure
+cloud-platforms,google cloud
+cloud-platforms,amazon web services
+cloud-platforms,cloud computing
+docker,docker
+docker,kubernetes
+docker,k8s
+docker,containers
+docker,containerization
+linux-cli,linux
+linux-cli,command line
+linux-cli,bash
+linux-cli,shell scripting
+linux-cli,unix
+communication,communication skills
+communication,written communication
+communication,verbal communication
+teamwork,teamwork
+teamwork,collaboration
+teamwork,cross-functional
+problem-solving,problem solving
+problem-solving,problem-solving
+problem-solving,analytical skills
+critical-thinking,critical thinking
+leadership,leadership
+leadership,team lead
+project-management,project management
+project-management,agile
+project-management,scrum
+project-management,jira
+project-management,kanban
+presentation-skills,presentation skills
+presentation-skills,public speaking
+time-management,time management
+stakeholder-management,stakeholder management
+stakeholder-management,stakeholders
+adaptability,adaptability
+adaptability,flexibility

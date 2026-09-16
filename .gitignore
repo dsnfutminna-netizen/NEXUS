@@ -1,0 +1,34 @@
+# NEXUS
+# Pilot database (rebuild anytime with: python app/seed_db.py)
+nexus.db
+app/nexus.db
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.gstack/
+
+# Local credentials, databases and agent state must never be published.
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+*.db
+*.db-wal
+*.db-shm
+*.sqlite*
+.claude/
+.codex/
+supabase/.temp/
+supabase/.branches/
+release-private/

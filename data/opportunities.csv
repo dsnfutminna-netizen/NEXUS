@@ -1,0 +1,6 @@
+slug,title,category,organization,description,url,is_remote,min_level,max_level,deadline,source
+dsn-ds-internship,DSN Data Science Internship,internship,Data Science Nigeria,Hands-on internship building data science solutions.,https://example.org/dsn-ds,1,200,500,2026-10-31,seed
+ai-eng-fellowship,AI Engineering Fellowship,fellowship,AI Saturdays,Fellowship for building and deploying ML systems.,https://example.org/ai-fellow,1,300,700,2026-11-15,seed
+futminna-frontend-hack,FUTMinna Frontend Hackathon,hackathon,DSN FUTMinna,48-hour hackathon to build web apps.,https://example.org/frontend-hack,0,,,2026-10-20,seed
+product-design-bootcamp,Product Design Bootcamp,training,DesignLab,Intensive product design training with a capstone.,https://example.org/design-bootcamp,1,,,2026-11-05,seed
+growth-marketing-internship,Growth Marketing Internship,internship,GrowthLab,Run real digital marketing campaigns end-to-end.,https://example.org/growth,1,200,500,2026-10-28,seed
