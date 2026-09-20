@@ -32,3 +32,9 @@ Thumbs.db
 supabase/.temp/
 supabase/.branches/
 release-private/
+node_modules/
+.next/
+.vercel/
+*.tsbuildinfo
+web/test-results/
+web/playwright-report/
