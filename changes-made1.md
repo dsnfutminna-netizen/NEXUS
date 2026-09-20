@@ -144,3 +144,53 @@ confirmation. Password recovery/deletion remain facilitator-assisted. Feed refre
 is manual. The app's rules and inferred tags do not guarantee eligibility, hiring
 outcomes, availability or adoption. Use the existing pilot script to measure
 whether testers find a useful next action and return to use NEXUS.
+
+## Authentication diagnostics — 17 September 2026
+
+- Replaced generic cloud authentication errors with safe messages for unconfirmed
+  email, unauthorized email delivery, sending limits, disabled signup and invalid
+  login credentials. Unknown failures remain neutral and never expose provider
+  exception text, passwords or keys.
+- Clarified that local-demo accounts are separate from deployed accounts.
+- Added three error-message tests; the eight UI regression checks also pass.
+- Supabase accepted the locally configured publishable key and reported signup
+  enabled with email confirmation required. This does not verify Streamlit's
+  deployed secrets or external confirmation-email delivery. The signup failure
+  remains under investigation pending the actual deployed error and SMTP status.
+
+## Website migration — 20 September 2026
+
+### What changed and why
+
+| Change | Why it matters to testers |
+|---|---|
+| Added a Next.js/TypeScript website in `web`, using Supabase and prepared for Vercel | Provides normal page navigation and a maintainable website foundation beyond Streamlit |
+| Applied a consistent forest-green, white and restrained red design | Creates a recognizable NEXUS identity, clear hierarchy and readable forms |
+| Added responsive landing, sign-in and workspace layouts, plus an expandable phone menu | Makes all sections discoverable without horizontal navigation scrolling |
+| Added three-step onboarding with Save and continue, skip options and profile editing | Students can start with what they know and preserve each completed step |
+| Ported skill gaps, recommendation scoring and completeness calculations to TypeScript | Keeps established behavior while moving to the new application |
+| Added searchable opportunities, detail pages, saved items, source links and sample/expiry handling | Supports the complete discover–evaluate–save journey |
+| Added consent-aware rankings and roadmap, recovery/resend flows and clearer auth errors | Gives students control and useful recovery paths when something goes wrong |
+| Fixed a post-login redirect chain that lost session context during browser tests | Prevents a successful sign-in from returning the student to the sign-in screen |
+| Added token-hash confirmation/recovery routes | Supports email links opened in another browser once Supabase templates and SMTP are configured |
+| Added feedback categories, optional rating/contact permission, submission acknowledgement and visible status | Creates a usable feedback loop inside the product |
+| Added restricted admin review, private notes, status changes and CSV export | Lets the pilot team act on feedback while preserving student privacy |
+| Added database policies and an operator-only feed refresh function/workflow | Enforces permissions in PostgreSQL and prepares controlled content refresh |
+| Added deployment documentation, pinned dependency lock and GitHub checks | Makes the migration repeatable and reviewable |
+
+### Validation
+
+- 28 web scoring/URL/date tests passed, including 25 Python parity fixtures.
+- PostgreSQL migration and permission tests passed in PGlite: user isolation, identity, consent, feedback ownership, admin-only review, private notes and denied student ingestion.
+- Five browser journeys passed against an isolated local API double: mobile onboarding, full student journey, public mobile screens, invalid login, and administrator review/export. An additional focused check covers the final mobile menu change.
+- The production build passed. Desktop and phone screenshots were inspected.
+- Existing Python checks passed: seven intelligence, ten tagging, and eleven unittest checks covering UI/authentication behavior.
+- Public feed dry run fetched 32 listings and produced 28 tagged listings; it made no database writes.
+
+Browser fixtures are synthetic and local. These results do not establish real SMTP delivery or hosted Supabase correctness.
+
+### Remaining launch setup
+
+The owner supplied test project `nkllkzpmldmhoxbolgjw`. The Supabase connector has not become callable in this running task after reconnection, and the CLI has no authenticated session. Hosted migrations and real-account verification therefore remain pending. Custom SMTP and a verified sender domain are not configured. Vercel import/environment setup and a deployed smoke test also remain pending.
+
+See `docs/web-migration.md` for exact settings, email templates, acceptance steps and cutover instructions. Publish a named pilot contact and retention schedule before wider release. Adoption must be measured with testers; visual polish and passing local tests do not establish it.

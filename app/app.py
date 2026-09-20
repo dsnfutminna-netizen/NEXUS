@@ -19,6 +19,7 @@ from html import escape
 import re
 import os
 import presentation as ui
+from auth_messages import auth_error_message
 import streamlit as st
 
 import db as sqlite_db
@@ -129,6 +130,8 @@ def render_auth():
     st.markdown("<div class=auth-marker></div>", unsafe_allow_html=True)
     st.write("Find the skills to build and opportunities that fit your career goal.")
     st.caption("DSN FUTMinna · Student pilot")
+    if CLOUD:
+        st.caption("First time on this site? Create a new account. Accounts from the local demo are separate.")
     login_tab, signup_tab = st.tabs(["Log in", "Create account"])
 
     with login_tab:
@@ -138,8 +141,10 @@ def render_auth():
             if st.form_submit_button("Log in", use_container_width=True, type="primary"):
                 try:
                     row = db.authenticate(email, pw)
-                except Exception:
+                except Exception as error:
+                    st.error(auth_error_message(error, "login"))
                     row = None
+                    return
                 if row:
                     st.session_state.uid = row["id"]
                     st.session_state.uname = row["full_name"]
@@ -174,8 +179,8 @@ def render_auth():
                         st.session_state.uname = name
                         record_event(uid, "signup")
                         st.rerun()
-                    except Exception:
-                        st.error("We couldn't create your account. Check your details, try logging in if you already registered, or contact the pilot team.")
+                    except Exception as error:
+                        st.error(auth_error_message(error, "signup"))
 
 
 # ------------------------------------------------------------------ profile

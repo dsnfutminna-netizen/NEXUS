@@ -10,6 +10,8 @@ for the DSN AI Bootcamp.
 > Full concept: see `NEXUS.docx`.
 
 ## Status
+The Next.js website migration lives in [`web`](web/README.md), with Vercel and Supabase setup in [the migration guide](docs/web-migration.md). It is undergoing acceptance testing; hosted database and email verification are required before launch. The Streamlit application remains available during the transition.
+
 The design-audit changes are implemented. See [changes-made1.md](changes-made1.md) for the change rationale, validation evidence, pilot limits, and a real-user testing script. Visual conventions are in [DESIGN.md](DESIGN.md).
 
 ✅ **Golden path runnable** — signup → profile → skill gaps → matched
