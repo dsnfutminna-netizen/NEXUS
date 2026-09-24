@@ -65,7 +65,7 @@ export default async function Login({
           {q.notice && (
             <p className="notice error" role="alert">
               {q.notice === "profile"
-                ? "We could not prepare your profile. Contact the pilot team."
+                ? "We could not prepare your profile. Contact support."
                 : "That link is invalid or expired. Please request a new email below."}
             </p>
           )}
@@ -125,7 +125,7 @@ export default async function Login({
             )}
             {mode === "signup" && (
               <p className="fine-print">
-                Your profile is private to your account and authorized pilot
+                Your profile is private to your account and authorized
                 support. Read{" "}
                 <Link href="/privacy">how we handle your data</Link>.
                 Recommendation and analytics consent is a separate choice in

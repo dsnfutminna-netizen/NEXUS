@@ -31,7 +31,7 @@ export default async function Settings() {
       <section className="card form-card">
         <h2>Request account deletion</h2>
         <p>
-          The pilot team can delete your account and associated personal data.
+          The support team can delete your account and associated personal data.
           Submit an account request so the team can verify ownership and follow
           up.
         </p>

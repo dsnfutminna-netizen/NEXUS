@@ -28,8 +28,7 @@ export default async function Feedback({
           <h2>Share your experience</h2>
           {error ? (
             <p className="notice error">
-              Feedback is not available yet. Please contact your pilot
-              facilitator. The team needs to finish the feedback database setup.
+              Feedback is not available yet. Please contact support. The NEXUS team is finalizing the feedback database setup.
             </p>
           ) : (
             <ActionForm once action={sendFeedback} label="Send feedback →">
@@ -87,7 +86,7 @@ export default async function Feedback({
               <label className="check">
                 <input type="checkbox" name="contact" />
                 <span>
-                  The pilot team may contact me about this feedback using my
+                  The NEXUS team may contact me about this feedback using my
                   account email.
                 </span>
               </label>
@@ -105,8 +104,7 @@ export default async function Feedback({
             <hr />
             <h3>Need account help?</h3>
             <p>
-              Choose account help above, or contact the facilitator who invited
-              you. Deletion requests are reviewed by the pilot team.
+              Choose account help above or contact support. Deletion requests are reviewed by the support team.
             </p>
           </section>
         </aside>

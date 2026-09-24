@@ -11,7 +11,7 @@ export default function Privacy() {
         <span className="eyebrow">PRIVACY & DATA</span>
         <h1>Your information, explained.</h1>
         <p>
-          NEXUS is a DSN FUTMinna student pilot. We store your account details,
+          NEXUS is a DSN FUTMinna student platform. We store your account details,
           the profile information you choose to provide, skill ratings,
           interests, saved opportunities, and feedback.
         </p>
@@ -20,20 +20,19 @@ export default function Privacy() {
           With your consent, we use your profile to suggest skills and rank
           opportunities. These are transparent rules based on self-assessed
           skills and extracted listing tags. They are not hiring decisions or
-          guarantees of eligibility. Pilot usage analytics require consent too.
+          guarantees of eligibility. Platform usage analytics require consent too.
         </p>
         <h2>Your choices</h2>
         <p>
           You can edit your profile and withdraw recommendation and analytics
           consent in Settings. You can still browse opportunities without
           personalized rankings. Withdrawing consent does not erase saved
-          information. Request deletion through Help & feedback or your pilot
-          facilitator.
+          information. Request deletion through Help & feedback or support.
         </p>
         <h2>Who can access it</h2>
         <p>
           Your records are protected by per-user database access policies.
-          Authorized operators maintain the service. Pilot administrators can
+          Authorized operators maintain the service. Platform administrators can
           review feedback and internal review notes. Other students cannot read
           your profile or feedback. We do not publish student profiles.
         </p>
@@ -47,16 +46,13 @@ export default function Privacy() {
         <h2>Service providers</h2>
         <p>
           The website is designed for Vercel hosting, with Supabase providing
-          account and database services. The pilot team must configure an email
-          provider for account confirmation and password recovery. Information
+          account and database services. An email provider is configured for account confirmation and password recovery. Information
           may be processed outside Nigeria.
         </p>
         <h2>Retention and requests</h2>
         <p>
-          The pilot team is responsible for reviewing retention and deletion
-          requests. A final retention schedule and named contact must be
-          published before wider release. For now, contact the facilitator who
-          invited you.
+          The NEXUS team is responsible for reviewing retention and deletion
+          requests. For account requests, contact support through Help & feedback.
         </p>
         <Link className="button" href="/app/settings">
           Manage my preferences

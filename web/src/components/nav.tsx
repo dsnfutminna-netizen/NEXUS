@@ -59,7 +59,7 @@ export function Nav({ admin = false }: { admin?: boolean }) {
         {admin && (
           <Link href="/app/admin" onClick={() => setOpen(false)}>
             <ShieldCheck size={19} />
-            Pilot admin
+            Platform admin
           </Link>
         )}
       </nav>

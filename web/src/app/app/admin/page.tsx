@@ -41,9 +41,9 @@ export default async function Admin({
   return (
     <>
       <PageHeading
-        eyebrow="PILOT ADMINISTRATION"
+        eyebrow="PLATFORM ADMINISTRATION"
         title="Listen. Learn. Improve."
-        description="Monitor system activity, student onboarding, and review pilot feedback in real time."
+        description="Monitor system activity, student onboarding, and review student feedback in real time."
       >
         <Link className="button secondary" href="/app/admin/export">
           Export feedback CSV ↓
