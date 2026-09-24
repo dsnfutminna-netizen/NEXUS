@@ -26,17 +26,52 @@ export default async function Admin({
     .select("*")
     .order("created_at", { ascending: false })
     .limit(500);
+
+  const { count: studentCount } = await db
+    .from("profiles")
+    .select("*", { count: "exact", head: true });
+  const { count: oppCount } = await db
+    .from("opportunities")
+    .select("*", { count: "exact", head: true });
+  const { count: openCount } = await db
+    .from("feedback_requests")
+    .select("*", { count: "exact", head: true })
+    .neq("status", "resolved");
+
   return (
     <>
       <PageHeading
         eyebrow="PILOT ADMINISTRATION"
         title="Listen. Learn. Improve."
-        description="Review student feedback and track follow-up. Internal notes are visible only to administrators."
+        description="Monitor system activity, student onboarding, and review pilot feedback in real time."
       >
         <Link className="button secondary" href="/app/admin/export">
           Export feedback CSV ↓
         </Link>
       </PageHeading>
+
+      <div className="stats">
+        <div>
+          <span>
+            <b>{studentCount ?? 0}</b> registered students
+          </span>
+        </div>
+        <div>
+          <span>
+            <b>{oppCount ?? 0}</b> active opportunities
+          </span>
+        </div>
+        <div>
+          <span>
+            <b>{openCount ?? 0}</b> open feedback issues
+          </span>
+        </div>
+        <div>
+          <span>
+            <b>{reports?.length ?? 0}</b> total reports in view
+          </span>
+        </div>
+      </div>
       <form className="filters">
         <label>
           Status
