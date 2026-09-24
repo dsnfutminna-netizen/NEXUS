@@ -19,7 +19,7 @@ export default async function AppLayout({
         <div className="sidebar-foot">
           <div className="pilot-tag">
             <i />
-            DSN FUTMinna pilot
+            DSN FUTMinna Platform
           </div>
           <p>A little progress, every day.</p>
         </div>

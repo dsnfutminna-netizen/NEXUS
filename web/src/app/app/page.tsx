@@ -147,7 +147,7 @@ export default async function Dashboard() {
         <div className="empty">
           <h3>Your next opportunity is on its way.</h3>
           <p>
-            The pilot team is preparing current listings. In the meantime,
+            The NEXUS team is preparing current listings. In the meantime,
             explore your skill roadmap.
           </p>
           <Link href="/app/roadmap">Explore my roadmap →</Link>

@@ -5,7 +5,7 @@ export function authError(code?: string) {
     invalid_credentials:
       "That email and password do not match. Local demo accounts are separate from website accounts.",
     email_address_not_authorized:
-      "Email delivery is not ready for this address. Please contact the pilot team.",
+      "Email delivery is not ready for this address. Please contact support.",
     over_email_send_rate_limit:
       "The email sending limit has been reached. Please wait before trying again.",
     over_request_rate_limit: "Too many attempts. Please wait a few minutes.",
@@ -16,6 +16,6 @@ export function authError(code?: string) {
   };
   return (
     messages[code || ""] ||
-    "We could not complete that request. Please try again or contact the pilot team."
+    "We could not complete that request. Please try again or contact support."
   );
 }

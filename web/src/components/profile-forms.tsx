@@ -72,7 +72,7 @@ export function Academic({ d, next }: { d: Dataset; next?: string }) {
       <label className="check">
         <input type="checkbox" name="consent" defaultChecked={p.data_consent} />
         <span>
-          Use my profile for personalized recommendations and pilot usage
+          Use my profile for personalized recommendations and platform usage
           analytics.
           <small>
             Optional. You can withdraw this in Settings. Your saved profile and
