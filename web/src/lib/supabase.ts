@@ -2,9 +2,13 @@ import "server-only";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 export function configured() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
   return (
-    !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
-    !!process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+    !!url &&
+    !!key &&
+    !url.includes("YOUR_") &&
+    !key.includes("YOUR_")
   );
 }
 export async function supabase() {

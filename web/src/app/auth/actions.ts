@@ -1,5 +1,5 @@
 "use server";
-import { supabase } from "@/lib/supabase";
+import { supabase, configured } from "@/lib/supabase";
 import { authError } from "@/lib/auth-errors";
 import type { FormState } from "@/lib/types";
 import { redirect } from "next/navigation";
@@ -22,6 +22,12 @@ export async function authenticate(
     mode = String(form.get("mode"));
   if (!emailSchema.safeParse(email).success)
     return { error: "Enter a valid email address." };
+  if (!configured()) {
+    return {
+      error:
+        "Supabase setup required: Please update NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY in web/.env.local with your Supabase credentials.",
+    };
+  }
   try {
     const db = await supabase();
     if (mode === "login") {
