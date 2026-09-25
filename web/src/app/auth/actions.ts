@@ -6,8 +6,9 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 const emailSchema = z.email().max(254);
 function site() {
-  const url = process.env.NEXT_PUBLIC_SITE_URL;
-  if (!url) throw new Error("Missing site URL");
+  const envUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const vercelUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null;
+  const url = envUrl && !envUrl.includes("localhost") ? envUrl : (vercelUrl || envUrl || "http://localhost:3005");
   return new URL(url).origin;
 }
 export async function authenticate(

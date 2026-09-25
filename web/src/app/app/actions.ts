@@ -46,14 +46,27 @@ export async function saveAcademic(
     return {
       error: "Check your name, department, career, level, and CGPA (0–5).",
     };
+
+  const customDept = text(f, "custom_department");
+  const formattedCustomDept = customDept
+    ? customDept
+        .split(" ")
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+        .join(" ")
+    : null;
+
   try {
+    const updateData: Record<string, unknown> = {
+      ...input.data,
+      consent_at: input.data.data_consent ? new Date().toISOString() : null,
+      consent_version: "web-1",
+    };
+    if (formattedCustomDept) {
+      updateData.bio = `Department: ${formattedCustomDept}`;
+    }
     const { error } = await db
       .from("profiles")
-      .update({
-        ...input.data,
-        consent_at: input.data.data_consent ? new Date().toISOString() : null,
-        consent_version: "web-1",
-      })
+      .update(updateData)
       .eq("id", user.id);
     if (error)
       return { error: "Your profile could not be saved. Please try again." };
