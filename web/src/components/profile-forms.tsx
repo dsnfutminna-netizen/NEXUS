@@ -1,9 +1,16 @@
+"use client";
+import { useState } from "react";
 import type { Dataset } from "@/lib/types";
 import { ActionForm } from "./form";
 import { saveAcademic, saveSkills, saveInterests } from "@/app/app/actions";
 import { levels } from "@/lib/intelligence";
 export function Academic({ d, next }: { d: Dataset; next?: string }) {
   const p = d.profile;
+  const otherDeptId = d.departments.find(
+    (dep) => dep.name.toLowerCase() === "other"
+  )?.id;
+  const [deptId, setDeptId] = useState<string>(String(p.department_id || ""));
+
   return (
     <ActionForm
       key={next}
@@ -38,7 +45,11 @@ export function Academic({ d, next }: { d: Dataset; next?: string }) {
         </label>
         <label>
           Department
-          <select name="department_id" defaultValue={p.department_id || ""}>
+          <select
+            name="department_id"
+            value={deptId}
+            onChange={(e) => setDeptId(e.target.value)}
+          >
             <option value="">Select department</option>
             {d.departments.map((c) => (
               <option key={c.id} value={c.id}>
@@ -47,6 +58,16 @@ export function Academic({ d, next }: { d: Dataset; next?: string }) {
             ))}
           </select>
         </label>
+        {otherDeptId && Number(deptId) === otherDeptId && (
+          <label>
+            Specify Department
+            <input
+              name="custom_department"
+              maxLength={100}
+              placeholder="e.g. Agricultural & Bioresources Engineering"
+            />
+          </label>
+        )}
         <label>
           Level
           <select name="level" defaultValue={p.level || ""}>

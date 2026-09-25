@@ -149,10 +149,26 @@ insert into departments (name, faculty) values
   ('Mechanical Engineering','SEET'),
   ('Civil Engineering','SEET'),
   ('Chemical Engineering','SEET'),
+  ('Agricultural & Bioresources Engineering','SEET'),
+  ('Agricultural Economics & Extension Technology','SAAT'),
+  ('Animal Production','SAAT'),
+  ('Crop Production','SAAT'),
+  ('Soil Science & Land Management','SAAT'),
+  ('Water Resources, Aquaculture & Fisheries Technology','SAAT'),
+  ('Biochemistry','SLS'),
+  ('Microbiology','SLS'),
+  ('Plant Biology','SLS'),
+  ('Geology','SPS'),
+  ('Architecture','SET'),
+  ('Building Technology','SET'),
+  ('Quantity Surveying','SET'),
+  ('Urban & Regional Planning','SET'),
+  ('Estate Management & Valuation','SET'),
+  ('Industrial & Technology Education','SSTE'),
   ('Other','—');
 
 -- ---------------------------------------------------------------------
--- 4. THE 5 v1 CAREER PATHWAYS
+-- 4. CAREER PATHWAYS
 -- ---------------------------------------------------------------------
 insert into careers (name, slug, description) values
   ('Data Scientist','data-scientist',
@@ -164,7 +180,19 @@ insert into careers (name, slug, description) values
   ('Product Designer','product-designer',
      'Researches users and designs usable, valuable product experiences.'),
   ('Digital Marketer','digital-marketer',
-     'Grows audiences and conversions across digital channels using data.');
+     'Grows audiences and conversions across digital channels using data.'),
+  ('Cybersecurity Analyst','cybersecurity-analyst',
+     'Monitors, detects, and defends networks and applications against cyber threats.'),
+  ('Cloud / DevOps Engineer','devops-engineer',
+     'Automates cloud infrastructure, CI/CD pipelines, and system reliability.'),
+  ('Data Engineer','data-engineer',
+     'Architects and maintains data pipelines, data warehouses, and ETL infrastructure.'),
+  ('Product Manager','product-manager',
+     'Defines product vision, prioritizes features, and aligns cross-functional engineering and design teams.'),
+  ('UI/UX Researcher','ux-researcher',
+     'Conducts user research, usability testing, and translates user behavior into actionable design insights.'),
+  ('Embedded Systems & Robotics Engineer','embedded-robotics',
+     'Designs microcontrollers, hardware interfaces, IoT devices, and robotic control systems.');
 
 -- ---------------------------------------------------------------------
 -- 5. CAREER -> REQUIRED SKILLS  (target_rank 1..3, weight 3=core/2=important/1=nice)
