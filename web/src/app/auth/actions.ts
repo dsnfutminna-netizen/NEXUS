@@ -68,7 +68,7 @@ export async function authenticate(
         return {
           error: "Enter your name and a password of at least 8 characters.",
         };
-      const { error } = await db.auth.signUp({
+      const { data, error } = await db.auth.signUp({
         email,
         password,
         options: {
@@ -77,10 +77,27 @@ export async function authenticate(
         },
       });
       if (error) return { error: authError(error.code) };
-      return {
-        success:
-          "Check your email for a confirmation link. After confirming, return here to sign in.",
-      };
+
+      if (data.session && data.user) {
+        const { error: profileError } = await db.from("profiles").upsert(
+          {
+            id: data.user.id,
+            email: data.user.email,
+            full_name: name,
+          },
+          { onConflict: "id" },
+        );
+        if (profileError)
+          return {
+            error: "Could not prepare your profile. Please try signing in.",
+          };
+        destination = "/onboarding";
+      } else {
+        return {
+          success:
+            "Check your email for a confirmation link. After confirming, return here to sign in.",
+        };
+      }
     } else if (mode === "reset") {
       const { error } = await db.auth.resetPasswordForEmail(email, {
         redirectTo: site() + "/auth/callback?next=/reset-password",
