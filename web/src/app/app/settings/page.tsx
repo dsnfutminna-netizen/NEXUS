@@ -25,8 +25,12 @@ export default async function Settings() {
         <p>
           Signed in as <b>{d.profile.email}</b>.
         </p>
-        <Link className="button secondary" href="/login?mode=reset">
-          Request password reset
+        <p>
+          While you are signed in, you can set a new password. You will be
+          signed out afterward and can sign in with the new one.
+        </p>
+        <Link className="button secondary" href="/reset-password">
+          Change password
         </Link>
       </section>
       <section className="card form-card">
