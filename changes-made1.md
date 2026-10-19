@@ -213,3 +213,19 @@ Browser fixtures are synthetic and local. These results do not establish real SM
 The owner supplied test project `nkllkzpmldmhoxbolgjw`. The Supabase connector has not become callable in this running task after reconnection, and the CLI has no authenticated session. Hosted migrations and real-account verification therefore remain pending. Custom SMTP and a verified sender domain are not configured. Vercel import/environment setup and a deployed smoke test also remain pending.
 
 See `docs/web-migration.md` for exact settings, email templates, acceptance steps and cutover instructions. Publish a named pilot contact and retention schedule before wider release. Adoption must be measured with testers; visual polish and passing local tests do not establish it.
+
+## Pilot website release — 19 October 2026
+
+The earlier "remaining launch setup" notes above describe the September state. The current release is on `https://nexus-c73i-gamma.vercel.app/`.
+
+| Change | Why |
+|---|---|
+| Set the Vercel public site URL and Supabase Auth Site URL to the exact production origin; allow `/auth/callback` | Signup and future confirmation links return to the live website instead of localhost or a nested `/app` path. |
+| Kept Supabase **Confirm email off** for the limited pilot, as approved by the owner | New testers can create accounts without an SMTP service; their addresses remain unverified until email delivery is configured. |
+| Published support contact, a six-month inactivity retention policy, and an admin deletion procedure | Testers can find help and understand how to request deletion; the team has an operational route to fulfill it. Retention/deletion is a manual team process, not an automated expiry job. |
+| Added feedback prompts, consent-gated usage events, and admin metrics | The team can learn whether students understood recommendations and found useful next actions without collecting analytics after consent withdrawal. |
+| Added Jobicy, Greenhouse, and Lever feed adapters, stricter student-role filters, stale-feed hiding, and two official curated programs | The discovery system can draw from multiple sources while avoiding obviously senior and stale listings. The scheduled refresh still needs protected GitHub secrets and vetted organization boards; it is not active yet. |
+| Fixed category matching so “International Interpreter” is not mistaken for an internship | Prevents a misleading type label on opportunity cards. |
+| Documented production migration-history drift and the verified procedure for granting the support account admin access | Prevents a blanket migration push from failing against existing pilot objects and avoids assigning admin privileges before the account owner signs up. |
+
+Production Vercel reported the previous release as Ready; this final correction must finish deployment. Local validation: 29 website tests, TypeScript checks, production build, database permission checks, and Python feed-quality checks passed. A real tester signup, feedback isolation across hosted accounts, and daily feed refresh still require live acceptance checks. Password reset remains facilitator-assisted until SMTP is configured.

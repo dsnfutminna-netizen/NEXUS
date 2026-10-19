@@ -63,11 +63,11 @@ def classify_category(title: str, tags) -> str:
     hay = (title + " " + " ".join(tags or [])).lower()
     if "scholarship" in hay:
         return "scholarship"
-    if "fellow" in hay:
+    if re.search(r"\bfellow(ship)?\b", hay):
         return "fellowship"
     if "hackathon" in hay:
         return "hackathon"
-    if "intern" in hay:
+    if re.search(r"\bintern(ship)?\b", hay):
         return "internship"
     if any(t in hay for t in ("bootcamp", "training", "course")):
         return "training"

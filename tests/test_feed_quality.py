@@ -14,6 +14,7 @@ class FeedQualityTests(unittest.TestCase):
         self.assertTrue(sources.is_student_relevant("Junior Data Analyst", []))
         self.assertFalse(sources.is_student_relevant("International Interpreter", []))
         self.assertFalse(sources.is_student_relevant("Senior Intern Manager", []))
+        self.assertEqual(sources.classify_category("International Interpreter", []), "job")
 
     def test_worker_rejects_unsafe_or_expired_listing(self):
         base = {"external_id": "1", "title": "Junior Data Analyst", "organization": "Example", "url": "https://jobs.example.org/role"}

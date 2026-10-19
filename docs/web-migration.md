@@ -16,9 +16,11 @@ Use the test project for acceptance testing before any production cutover. Do no
 
 ## Supabase setup
 
-For an empty project, apply every file in `supabase/migrations` in timestamp order. For the existing pilot, apply only migrations that are absent from its migration history. Seed reference data using the repository's existing import tooling.
+For an empty project, apply every file in `supabase/migrations` in timestamp order. The existing pilot has schema drift: `feedback_requests`, `feedback_notes`, and `sync_feed_opportunities` exist, but their September migration versions are absent from its history. The October additions and curated programs were applied separately. **Do not run a blanket `supabase db push` against the pilot** until an operator reconciles those two historical versions with the actual objects. Seed reference data using the repository's existing import tooling.
 
 New migrations add feedback tables and policies, an admin role check, private review notes, and an operator-only feed upsert function. They do not delete or replace existing student data. Assign an administrator through a trusted database operator after verifying the user's identity; signup metadata must never grant roles.
+
+The designated support/admin address is `dsnfutminna@datascientistsfoundation.org`. It must first create an Auth account through the website with a team-held password; then an operator can grant its profile the `admin` role after verifying ownership. An existing pilot admin can continue triaging feedback in the meantime. Do not create a role from signup metadata or replace the existing admin without confirming team access.
 
 Run existing `db/test_rls.sql` and `db/test_identity_consent.sql` in the test project. Complete hosted feedback isolation checks with two student accounts and one operator-designated admin. Local PGlite checks complement this step.
 
