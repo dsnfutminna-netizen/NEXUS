@@ -34,9 +34,11 @@ Import the NEXUS GitHub repository, select the reviewed migration branch, set ro
 
 Never enter a service-role key into a `NEXT_PUBLIC_` variable. Environment changes require a fresh build. Keep production and preview variables separate, and use a stable test hostname for email links.
 
-## Email and redirects — launch dependency
+## Email and redirects — pilot mode
 
-Custom SMTP has not yet been configured. Choose an email provider and verify a domain under the owner's control. Enter SMTP credentials directly in Supabase, configure sender identity and DNS, and verify delivery to real tester inboxes. Keep email confirmation enabled.
+Custom SMTP has not yet been configured. During this limited pilot, turn **Confirm email off** in Supabase Authentication → Providers → Email, and set `NEXT_PUBLIC_EMAIL_DELIVERY_ENABLED=false` in Vercel. New password signups then receive a session and proceed directly to onboarding. Addresses are unverified while this mode is active. The site hides reset/resend controls and directs account-recovery requests to `dsnfutminna@datascientistsfoundation.org`; the operator must verify identity before making account changes. Do not advertise email recovery as available.
+
+When a provider is ready, verify the sending domain, configure custom SMTP and test confirmation/recovery delivery to an external address. Set the exact deployment origin as the Site URL and allow `/auth/callback`. Then turn **Confirm email on**, set `NEXT_PUBLIC_EMAIL_DELIVERY_ENABLED=true` in Vercel, redeploy, and test signup, confirmation and password recovery in a new browser session. Existing unverified pilot accounts need a separate verification plan before treating their email addresses as trusted.
 
 Set Supabase Site URL to the deployment's exact origin. Allow its `/auth/callback` redirect and local development callbacks only in the test project.
 
@@ -56,13 +58,13 @@ The application accepts only these two token types and fixed internal destinatio
 
 ## Feed refresh
 
-First run `python scripts/sync_cloud_feeds.py --dry-run`. For an operator-approved sync, supply `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` through the protected environment. The RPC accepts only Remotive and RemoteOK listings. Review listing freshness and source quality before inviting testers.
+First run `python scripts/sync_cloud_feeds.py --dry-run`. For an operator-approved sync, supply `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` through the protected environment. The RPC accepts Remotive, RemoteOK, Jobicy, and vetted Greenhouse/Lever organization boards. Add organizations to `data/opportunity_boards.json` only after verifying their public board and eligibility; the default list is empty. The worker rejects non-HTTPS links and old/expired postings, deduplicates source URLs, and hides unrefreshed listings after 45 days. Review listing geography and source quality before inviting testers.
 
 The GitHub workflow uses environment `pilot-feed-sync`, matching secrets and repository variable `NEXUS_FEED_SYNC_ENABLED=true`. It is disabled without that explicit variable. Do not place the credential in source code or web environment variables.
 
 ## Real-user acceptance before cutover
 
-1. Register, receive email, confirm in a second browser, sign in, reload, sign out, and reset a password.
+1. With pilot mode enabled, register, enter onboarding without an email step, sign in, reload and sign out. Verify account recovery is routed to support. Once SMTP is configured, separately test cross-browser confirmation and password reset before enabling those controls.
 2. Complete onboarding using Save and continue; confirm profile and skill ratings persist across sessions.
 3. Inspect the roadmap, find a live opportunity, open its source, save it and return to it.
 4. Withdraw personalization consent; confirm browsing still works and personalized scores disappear.

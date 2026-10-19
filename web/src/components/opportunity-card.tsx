@@ -33,6 +33,7 @@ export function OpportunityCard({ d, o }: { d: Dataset; o: Opportunity }) {
           {earlyCareer(o) ? "Early career" : "Check experience requirements"}
         </span>
         <span>{o.source || "Curated"}</span>
+        {o.fetched_at && <span>Checked {new Date(o.fetched_at).toLocaleDateString("en-GB", { timeZone: "UTC" })}</span>}
       </div>
       {d.profile.data_consent && (
         <div className="coverage">

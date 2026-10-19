@@ -83,6 +83,16 @@ export default async function Feedback({
                   ))}
                 </select>
               </label>
+              <p className="fine-print">For this visit, rate how clear your next career step felt before using NEXUS and how clear it feels now. Both answers are optional.</p>
+              <label>Clarity before this visit (optional)
+                <select name="clarity_before" defaultValue=""><option value="">Choose 1–5</option>{[1,2,3,4,5].map((n) => <option key={n} value={n}>{n} / 5</option>)}</select>
+              </label>
+              <label>Clarity now (optional)
+                <select name="clarity_after" defaultValue=""><option value="">Choose 1–5</option>{[1,2,3,4,5].map((n) => <option key={n} value={n}>{n} / 5</option>)}</select>
+              </label>
+              <label>How likely are you to recommend NEXUS to another student? (optional)
+                <select name="recommend_score" defaultValue=""><option value="">Choose 0–10</option>{Array.from({length:11}, (_,n) => <option key={n} value={n}>{n} / 10</option>)}</select>
+              </label>
               <label className="check">
                 <input type="checkbox" name="contact" />
                 <span>

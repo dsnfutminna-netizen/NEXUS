@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { dataset } from "@/lib/data";
-import { score, sample, safeUrl, expired } from "@/lib/intelligence";
+import { score, sample, safeUrl, expired, stale } from "@/lib/intelligence";
 import { ActionForm } from "@/components/form";
 import { toggleSaved } from "@/app/app/actions";
 export default async function Detail({
@@ -30,8 +30,9 @@ export default async function Detail({
           {o.location || (o.is_remote ? "Remote" : "Location not stated")} ·{" "}
           {o.source}
         </p>
+        {o.fetched_at && <p className="fine-print">Last checked {new Date(o.fetched_at).toLocaleDateString("en-GB", { timeZone: "UTC" })}</p>}
         <div className="detail-actions">
-          {!sample(o) && !expired(o) && url ? (
+          {!sample(o) && !expired(o) && !stale(o) && url ? (
             <a
               className="button"
               href={url}
@@ -46,6 +47,8 @@ export default async function Detail({
                 ? "Sample listing. Applications are disabled."
                 : expired(o)
                   ? "The recorded deadline has passed."
+                  : stale(o)
+                    ? "This listing has not been refreshed recently. Check the source before applying."
                   : "Application link unavailable."}
             </p>
           )}

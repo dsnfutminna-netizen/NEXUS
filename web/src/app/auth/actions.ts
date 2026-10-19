@@ -92,13 +92,22 @@ export async function authenticate(
             error: "Could not prepare your profile. Please try signing in.",
           };
         destination = "/onboarding";
+      } else if (data.user && (data.user.identities?.length ?? 0) === 0) {
+        return {
+          success:
+            "You may already have an account. Try signing in, or contact support if you cannot access it.",
+        };
       } else {
         return {
           success:
-            "Check your email for a confirmation link. After confirming, return here to sign in.",
+            process.env.NEXT_PUBLIC_EMAIL_DELIVERY_ENABLED === "true"
+              ? "Check your email for a confirmation link. After confirming, return here to sign in."
+              : "Your account needs email confirmation, but email delivery is not ready. Contact support so we can help you get started.",
         };
       }
     } else if (mode === "reset") {
+      if (process.env.NEXT_PUBLIC_EMAIL_DELIVERY_ENABLED !== "true")
+        return { error: "Email recovery is temporarily unavailable. Contact support for account help." };
       const { error } = await db.auth.resetPasswordForEmail(email, {
         redirectTo: site() + "/auth/callback?next=/reset-password",
       });
@@ -108,6 +117,8 @@ export async function authenticate(
           "If an account exists for this email, a password-reset link has been requested. Check your inbox and spam folder.",
       };
     } else if (mode === "resend") {
+      if (process.env.NEXT_PUBLIC_EMAIL_DELIVERY_ENABLED !== "true")
+        return { error: "Confirmation emails are temporarily unavailable. Contact support for account help." };
       const { error } = await db.auth.resend({
         type: "signup",
         email,

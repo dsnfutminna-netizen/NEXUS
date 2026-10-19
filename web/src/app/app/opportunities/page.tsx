@@ -1,5 +1,5 @@
 import { dataset } from "@/lib/data";
-import { sample, expired, earlyCareer, score } from "@/lib/intelligence";
+import { sample, expired, stale, earlyCareer, score } from "@/lib/intelligence";
 import { OpportunityCard } from "@/components/opportunity-card";
 import { PageHeading } from "@/components/page-heading";
 import Link from "next/link";
@@ -13,6 +13,7 @@ export default async function Opportunities({
   let rows = d.opportunities.filter(
     (o) =>
       !expired(o) &&
+      !stale(o) &&
       sample(o) === (q.samples === "yes") &&
       (!q.q ||
         (

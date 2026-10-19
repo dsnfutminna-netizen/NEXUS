@@ -36,6 +36,7 @@ export type Opportunity = {
   category: string;
   url: string | null;
   source: string | null;
+    fetched_at?: string | null;
   location: string | null;
   is_remote: boolean;
   deadline: string | null;

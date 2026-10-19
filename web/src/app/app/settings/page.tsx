@@ -2,6 +2,7 @@ import Link from "next/link";
 import { dataset } from "@/lib/data";
 import { Academic } from "@/components/profile-forms";
 import { PageHeading } from "@/components/page-heading";
+import { SupportLink } from "@/components/support-link";
 export default async function Settings() {
   const d = await dataset();
   return (
@@ -38,6 +39,9 @@ export default async function Settings() {
         <Link className="button danger-outline" href="/app/feedback">
           Request account help
         </Link>
+        <p className="fine-print">
+          Prefer email? <SupportLink>Contact support directly</SupportLink>.
+        </p>
         <Link className="text-link" href="/privacy">
           Read our data notice →
         </Link>
