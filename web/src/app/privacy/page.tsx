@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Brand } from "@/components/brand";
+import { SupportLink } from "@/components/support-link";
 export default function Privacy() {
   return (
     <>
@@ -27,7 +28,9 @@ export default function Privacy() {
           You can edit your profile and withdraw recommendation and analytics
           consent in Settings. You can still browse opportunities without
           personalized rankings. Withdrawing consent does not erase saved
-          information. Request deletion through Help & feedback or support.
+          information. You can request deletion through{" "}
+          <Link href="/app/feedback">Help &amp; feedback</Link> or by{" "}
+          <SupportLink>contacting support</SupportLink>.
         </p>
         <h2>Who can access it</h2>
         <p>
@@ -46,13 +49,20 @@ export default function Privacy() {
         <h2>Service providers</h2>
         <p>
           The website is designed for Vercel hosting, with Supabase providing
-          account and database services. An email provider is configured for account confirmation and password recovery. Information
-          may be processed outside Nigeria.
+          account and database services. When configured, an email provider is
+          used for account confirmation and password recovery. Information may
+          be processed outside Nigeria.
         </p>
         <h2>Retention and requests</h2>
         <p>
-          The NEXUS team is responsible for reviewing retention and deletion
-          requests. For account requests, contact support through Help & feedback.
+          We keep your information while your account is active. If you stop
+          signing in, we retain your account and profile for six months after
+          your last sign-in, then review them for deletion. You can ask us to
+          delete your account and personal data sooner. An administrator checks
+          ownership, handles verified requests promptly, and confirms when the
+          deletion is complete. Start a request
+          through <Link href="/app/feedback">Help &amp; feedback</Link> or{" "}
+          <SupportLink>contact support</SupportLink>.
         </p>
         <Link className="button" href="/app/settings">
           Manage my preferences

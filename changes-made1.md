@@ -1,5 +1,23 @@
 # Changes made 1 — NEXUS pilot usability
 
+## Website pilot update — 19 October 2026
+
+The September notes below describe the earlier Streamlit pilot. The current tester website is a separate Next.js application in `web/`.
+
+| Change | Why |
+|---|---|
+| Published `dsnfutminna@datascientistsfoundation.org` as the default support contact on login, settings, privacy and error screens. | A locked-out student needs a real route to the team. |
+| Added a six-month inactivity statement and a monthly deletion runbook in `docs/retention-operations.md`. | Gives the support team a concrete, reviewable procedure for the data policy. Deletion still requires an authorized operator. |
+| Added optional clarity-before, clarity-now and 0–10 recommendation questions to web feedback, with an admin summary. | Measures whether students leave with a clearer next step and whether they would recommend NEXUS. The two clarity ratings are retrospective in one visit, so they are directional feedback rather than a controlled before/after study. |
+| Added consent-gated usage events and corrected admin counts through a role-checked database function. | Lets the team observe actual adoption and avoids misleading per-user counts under row-level security. |
+| Added Jobicy and configurable public Greenhouse/Lever boards alongside RemoteOK and Remotive. Added source URL, freshness and age checks; stale listings disappear after 45 days without refresh. | Broadens discovery while showing where and when each listing came from. Organization boards start empty until the team vets them. Listings still need source-side eligibility checks. |
+| Added a pilot email-delivery switch. With SMTP unavailable, reset and resend controls are hidden and support is shown for recovery. | Avoids promising email actions that Supabase's default mail service cannot deliver to most testers. Supabase Confirm email must also be disabled for seamless signup; email addresses remain unverified until SMTP is configured and confirmation restored. |
+| Applied the full schema to the isolated Supabase test project, then the missing additive fields/functions to the pilot project. | Checked migrations before touching pilot data. Pilot migration history omits feedback/feed migrations even though their objects already existed; that drift needs reconciliation before a future blanket `db push`. |
+
+Validation: Next.js production build, TypeScript checks, 28 scoring tests, PGlite permission test and Python compile checks passed. A network-enabled feed dry run found 13 tagged listings without writing data. Hosted permission checks with separate student accounts and a live signup/recovery session are still required before inviting unassisted testers.
+
+---
+
 Date: 15 September 2026
 
 ## Outcome

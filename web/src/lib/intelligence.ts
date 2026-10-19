@@ -104,6 +104,10 @@ export function expired(o: Opportunity) {
     o.deadline.slice(0, 10) < new Date().toISOString().slice(0, 10)
   );
 }
+export function stale(o: Opportunity) {
+  if (!o.fetched_at || !["remotive", "remoteok", "jobicy", "greenhouse", "lever"].includes(o.source || "")) return false;
+  return Date.now() - new Date(o.fetched_at).getTime() > 45 * 24 * 60 * 60 * 1000;
+}
 export function earlyCareer(o: Opportunity) {
   return (
     !/\b(senior|sr|lead|head|director|principal|architect)\b/i.test(o.title) &&

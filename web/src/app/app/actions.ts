@@ -1,5 +1,6 @@
 "use server";
 import { session } from "@/lib/data";
+import { logEvent } from "@/lib/events";
 import type { FormState } from "@/lib/types";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
@@ -72,6 +73,7 @@ export async function saveAcademic(
       return { error: "Your profile could not be saved. Please try again." };
     revalidatePath("/app", "layout");
     revalidatePath("/onboarding");
+    await logEvent("profile_academic_saved");
     return {
       success:
         "Profile saved. " +
@@ -104,6 +106,7 @@ export async function saveSkills(
     if (error) return { error: "Skills could not be saved. Please try again." };
     revalidatePath("/app", "layout");
     revalidatePath("/onboarding");
+    await logEvent("skills_saved");
     return { success: "Your skill ratings are saved." };
   } catch {
     return { error: "Could not connect. Please retry saving your ratings." };
@@ -122,6 +125,7 @@ export async function saveInterests(
     return { error: "Interests could not be saved. Please try again." };
   revalidatePath("/app", "layout");
   revalidatePath("/onboarding");
+  await logEvent("interests_saved");
   return { success: "Interests saved." };
 }
 export async function toggleSaved(
@@ -147,6 +151,8 @@ export async function toggleSaved(
           );
     if (result.error) return { error: "Could not update saved opportunities." };
     revalidatePath("/app", "layout");
+    if (!remove)
+      await logEvent("opportunity_saved", { type: "opportunity", id });
     return { success: remove ? "Removed from saved." : "Opportunity saved." };
   } catch {
     return { error: "Connection interrupted. Please retry." };
@@ -159,12 +165,16 @@ export async function sendFeedback(
   const { db, user } = await session();
   const category = text(f, "category"),
     body = text(f, "body"),
-    rating = number(f, "rating");
+    rating = number(f, "rating"),
+    clarityBefore = number(f, "clarity_before"),
+    clarityAfter = number(f, "clarity_after"),
+    recommendScore = number(f, "recommend_score");
   if (
     !["problem", "idea", "experience", "account"].includes(category) ||
     body.length < 10 ||
     body.length > 4000 ||
-    (rating !== null && (!Number.isInteger(rating) || rating < 1 || rating > 5))
+    [rating, clarityBefore, clarityAfter].some((value) => value !== null && (!Number.isInteger(value) || value < 1 || value > 5)) ||
+    (recommendScore !== null && (!Number.isInteger(recommendScore) || recommendScore < 0 || recommendScore > 10))
   )
     return {
       error:
@@ -182,6 +192,9 @@ export async function sendFeedback(
         category,
         body,
         usefulness: rating,
+        clarity_before: clarityBefore,
+        clarity_after: clarityAfter,
+        recommend_score: recommendScore,
         allow_contact: f.get("contact") === "on",
         contact_email: f.get("contact") === "on" ? user.email : null,
         page_path: text(f, "page").slice(0, 150),

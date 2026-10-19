@@ -27,9 +27,8 @@ export default async function Admin({
     .order("created_at", { ascending: false })
     .limit(500);
 
-  const { count: studentCount } = await db
-    .from("profiles")
-    .select("*", { count: "exact", head: true });
+  const { data: metrics } = await db.rpc("admin_metrics");
+  const m = (metrics ?? {}) as Record<string, number>;
   const { count: oppCount } = await db
     .from("opportunities")
     .select("*", { count: "exact", head: true });
@@ -53,9 +52,22 @@ export default async function Admin({
       <div className="stats">
         <div>
           <span>
-            <b>{studentCount ?? 0}</b> registered students
+            <b>{m.students ?? 0}</b> registered students
           </span>
         </div>
+        <div>
+          <span>
+            <b>{m.onboarded ?? 0}</b> completed onboarding
+          </span>
+        </div>
+        <div>
+          <span>
+            <b>{m.consented ?? 0}</b> personalization on
+          </span>
+        </div>
+        <div><span><b>{m.feedback_responses ?? 0}</b> tester responses</span></div>
+        <div><span><b>{m.clarity_change ?? "—"}</b> average clarity change</span></div>
+        <div><span><b>{m.nps ?? "—"}</b> recommendation score</span></div>
         <div>
           <span>
             <b>{oppCount ?? 0}</b> active opportunities
@@ -113,6 +125,7 @@ export default async function Admin({
                 Usefulness: {r.usefulness || "Not rated"} · Contact permission:{" "}
                 {r.allow_contact ? "Yes" : "No"} · Page: {r.page_path}
               </p>
+              <p className="fine-print">Clarity before/now: {r.clarity_before ?? "—"} / {r.clarity_after ?? "—"} · Recommend: {r.recommend_score ?? "—"} / 10</p>
               <p className="fine-print">
                 {r.allow_contact && r.contact_email
                   ? "Contact: " + r.contact_email

@@ -3,7 +3,7 @@ export function authError(code?: string) {
     email_not_confirmed:
       "Please confirm your email first. Check your inbox and spam folder, or resend the confirmation below.",
     invalid_credentials:
-      "That email and password do not match. Local demo accounts are separate from website accounts.",
+      "That email and password do not match. Check for typos, or reset your password below.",
     email_address_not_authorized:
       "Email delivery is not ready for this address. Please contact support.",
     over_email_send_rate_limit:

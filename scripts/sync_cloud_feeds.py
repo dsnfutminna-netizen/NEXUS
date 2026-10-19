@@ -3,6 +3,8 @@ Required: SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in the CI secret store.
 Use --dry-run to validate feeds without any database mutation.
 """
 import csv,hashlib,json,os,sys,urllib.request
+from datetime import datetime,timedelta,timezone
+from urllib.parse import urlsplit
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'app'))
@@ -10,11 +12,23 @@ import sources,tagger
 
 def csv_rows(name):
  with (ROOT/'data'/name).open(encoding='utf-8',newline='') as f:return list(csv.DictReader(f))
+def valid_post(p):
+ try:
+  url=urlsplit(str(p.get('url') or ''))
+  if url.scheme!='https' or not url.hostname or url.username or url.password:return False
+  if not p.get('external_id') or not p.get('title') or not p.get('organization'):return False
+  if p.get('deadline') and datetime.fromisoformat(str(p['deadline'])[:10]).date()<datetime.now(timezone.utc).date():return False
+  if p.get('posted_at'):
+   published=datetime.fromisoformat(str(p['posted_at']).replace('Z','+00:00'))
+   if published.tzinfo is None:published=published.replace(tzinfo=timezone.utc)
+   if published<datetime.now(timezone.utc)-timedelta(days=45):return False
+  return True
+ except (TypeError,ValueError,OverflowError):return False
 def collect():
  skills=[{'slug':r['slug'],'name':r['skill']} for r in csv_rows('skill_taxonomy.csv')]
  index=tagger.build_skill_index(skills,csv_rows('skill_aliases.csv'));required={}
  for r in csv_rows('career_skills.csv'):required.setdefault(r['career_slug'],[]).append({'skill_slug':r['skill_slug'],'weight':int(r['weight'])})
- posts=[]
+ posts=[];seen_urls=set()
  for cls in sources.DEFAULT_ADAPTERS:
   adapter=cls()
   if adapter.name=='sample':continue
@@ -22,12 +36,16 @@ def collect():
   except Exception as exc:
    print(adapter.name+': '+type(exc).__name__);continue
   for p in fetched:
+   if not valid_post(p):continue
+   canonical=p['url'].split('#',1)[0].rstrip('/')
+   if canonical in seen_urls:continue
    tags=tagger.tag_skills(p['title'],p.get('description'),index)
    if not tags:continue
+   seen_urls.add(canonical)
    p['external_id']=str(p['external_id']);p['slug']='feed-'+hashlib.sha256((p['source']+':'+p['external_id']).encode()).hexdigest()[:24]
    p['skill_tags']=[{'slug':s,'weight':w} for s,w in tags.items()];p['career_tags']=list(tagger.infer_careers(tags,required));posts.append(p)
   print(adapter.name+': '+str(len(fetched))+' fetched')
- return posts
+ return posts[:500]
 if __name__=='__main__':
  posts=collect()
  if not posts:raise SystemExit('No listings fetched. Existing data was not changed.')

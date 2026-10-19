@@ -2,13 +2,15 @@ import Link from "next/link";
 import { Brand } from "@/components/brand";
 import { ActionForm } from "@/components/form";
 import { authenticate } from "@/app/auth/actions";
+import { SupportLink } from "@/components/support-link";
 export default async function Login({
   searchParams,
 }: {
   searchParams: Promise<{ mode?: string; notice?: string }>;
 }) {
   const q = await searchParams;
-  const mode = ["signup", "reset", "resend"].includes(q.mode || "")
+  const emailDelivery = process.env.NEXT_PUBLIC_EMAIL_DELIVERY_ENABLED === "true";
+  const mode = ["signup", ...(emailDelivery ? ["reset", "resend"] : [])].includes(q.mode || "")
     ? q.mode!
     : "login";
   const title = {
@@ -64,9 +66,14 @@ export default async function Login({
           </p>
           {q.notice && (
             <p className="notice error" role="alert">
-              {q.notice === "profile"
-                ? "We could not prepare your profile. Contact support."
-                : "That link is invalid or expired. Please request a new email below."}
+              {q.notice === "profile" ? (
+                <>
+                  We could not prepare your profile.{" "}
+                  <SupportLink>Contact support</SupportLink>.
+                </>
+              ) : (
+                "That link is invalid or expired. Please request a new email below."
+              )}
             </p>
           )}
           <ActionForm
@@ -136,19 +143,19 @@ export default async function Login({
           <div className="auth-links">
             {mode === "login" ? (
               <>
-                <Link href="/login?mode=reset">Forgot password?</Link>
+                {emailDelivery ? <Link href="/login?mode=reset">Forgot password?</Link> : <p>Forgot your password? <SupportLink>Contact support</SupportLink> for account recovery.</p>}
                 <p>
                   New to NEXUS?{" "}
                   <Link href="/login?mode=signup">Create an account</Link>
                 </p>
-                <Link href="/login?mode=resend">Resend confirmation email</Link>
+                {emailDelivery && <Link href="/login?mode=resend">Resend confirmation email</Link>}
               </>
             ) : (
               <Link href="/login">Already have an account? Sign in</Link>
             )}
           </div>
           <p className="fine-print">
-            Local demo accounts are separate from website accounts.
+            Need help signing in? <SupportLink>Contact support</SupportLink>.
           </p>
         </div>
       </main>
