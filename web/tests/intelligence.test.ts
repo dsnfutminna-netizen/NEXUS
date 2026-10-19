@@ -8,6 +8,7 @@ import {
   safeUrl,
   sample,
   expired,
+  stale,
 } from "../src/lib/intelligence";
 import type { Dataset, Opportunity } from "../src/lib/types";
 for (const [i, fixture] of cases.entries())
@@ -50,3 +51,7 @@ test("unsafe and disguised sample URLs", () => {
 });
 test("expired postings", () =>
   assert.equal(expired({ deadline: "2000-01-01" } as Opportunity), true));
+test("old feed listings are hidden without hiding curated programs", () => {
+  assert.equal(stale({ source: "remoteok", fetched_at: "2020-01-01T00:00:00Z" } as Opportunity), true);
+  assert.equal(stale({ source: "curated", fetched_at: "2020-01-01T00:00:00Z" } as Opportunity), false);
+});

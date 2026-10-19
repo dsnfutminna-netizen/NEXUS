@@ -21,7 +21,7 @@ def valid_post(p):
   if p.get('posted_at'):
    published=datetime.fromisoformat(str(p['posted_at']).replace('Z','+00:00'))
    if published.tzinfo is None:published=published.replace(tzinfo=timezone.utc)
-   if published<datetime.now(timezone.utc)-timedelta(days=45):return False
+   if published<datetime.now(timezone.utc)-timedelta(days=30):return False
   return True
  except (TypeError,ValueError,OverflowError):return False
 def collect():
@@ -40,7 +40,7 @@ def collect():
    canonical=p['url'].split('#',1)[0].rstrip('/')
    if canonical in seen_urls:continue
    tags=tagger.tag_skills(p['title'],p.get('description'),index)
-   if not tags:continue
+   if len(tags)<2:continue
    seen_urls.add(canonical)
    p['external_id']=str(p['external_id']);p['slug']='feed-'+hashlib.sha256((p['source']+':'+p['external_id']).encode()).hexdigest()[:24]
    p['skill_tags']=[{'slug':s,'weight':w} for s,w in tags.items()];p['career_tags']=list(tagger.infer_careers(tags,required));posts.append(p)

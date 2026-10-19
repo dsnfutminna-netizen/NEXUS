@@ -76,7 +76,9 @@ def classify_category(title: str, tags) -> str:
 
 def is_student_relevant(title: str, tags) -> bool:
     hay = (title + " " + " ".join(tags or [])).lower()
-    return any(t in hay for t in STUDENT_TERMS)
+    if re.search(r"\b(senior|sr|lead|manager|director|principal|head)\b", title.lower()):
+        return False
+    return any(re.search(r"\b" + re.escape(t) + r"\b", hay) for t in STUDENT_TERMS)
 
 
 def _norm(source, external_id, title, organization, description, url,
@@ -128,7 +130,7 @@ class RemotiveAdapter:
                 continue  # one failed search must not drop the others
             for j in data.get("jobs", []):
                 jid = str(j.get("id"))
-                if jid in seen:
+                if jid in seen or not is_student_relevant(j.get("title", ""), []):
                     continue
                 seen.add(jid)
                 out.append(_norm(
@@ -151,7 +153,7 @@ class RemoteOKAdapter:
             if not isinstance(j, dict) or not j.get("id") or not j.get("position"):
                 continue  # first element is a legal/metadata notice
             title, tags = j.get("position", ""), j.get("tags", [])
-            if not is_student_relevant(title, tags):
+            if not is_student_relevant(title, []):
                 continue
             out.append(_norm(
                 self.name, j.get("id"), title, j.get("company"),
@@ -186,7 +188,7 @@ class JobicyAdapter:
                 continue
             if any(term in level for term in ("senior", "lead", "principal", "director")):
                 continue
-            if not (is_student_relevant(title, job_types) or
+            if not (is_student_relevant(title, []) or
                     any(term in level for term in ("entry", "junior", "intern", "graduate"))):
                 continue
             description = strip_html(job.get("jobDescription") or job.get("jobExcerpt") or "")

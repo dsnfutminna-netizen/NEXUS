@@ -106,7 +106,7 @@ export function expired(o: Opportunity) {
 }
 export function stale(o: Opportunity) {
   if (!o.fetched_at || !["remotive", "remoteok", "jobicy", "greenhouse", "lever"].includes(o.source || "")) return false;
-  return Date.now() - new Date(o.fetched_at).getTime() > 45 * 24 * 60 * 60 * 1000;
+  return Date.now() - new Date(o.fetched_at).getTime() > 30 * 24 * 60 * 60 * 1000;
 }
 export function earlyCareer(o: Opportunity) {
   return (

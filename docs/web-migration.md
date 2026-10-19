@@ -58,7 +58,9 @@ The application accepts only these two token types and fixed internal destinatio
 
 ## Feed refresh
 
-First run `python scripts/sync_cloud_feeds.py --dry-run`. For an operator-approved sync, supply `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` through the protected environment. The RPC accepts Remotive, RemoteOK, Jobicy, and vetted Greenhouse/Lever organization boards. Add organizations to `data/opportunity_boards.json` only after verifying their public board and eligibility; the default list is empty. The worker rejects non-HTTPS links and old/expired postings, deduplicates source URLs, and hides unrefreshed listings after 45 days. Review listing geography and source quality before inviting testers.
+First run `python scripts/sync_cloud_feeds.py --dry-run`. For an operator-approved sync, supply `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` through the protected environment. The RPC accepts Remotive, RemoteOK, Jobicy, and vetted Greenhouse/Lever organization boards. Add organizations to `data/opportunity_boards.json` only after verifying their public board and eligibility; the default list is empty. The worker rejects non-HTTPS links and old/expired postings, deduplicates source URLs, hides unrefreshed listings in the UI after 30 days, and deactivates them in the database after 45 days. Review listing geography and source quality before inviting testers.
+
+Two curated, evergreen student programs are seeded from official GitHub Education and AWS Educate pages, with their own source links. The team should review their eligibility and availability monthly. This curated baseline is separate from the automatically refreshed job feed.
 
 The GitHub workflow uses environment `pilot-feed-sync`, matching secrets and repository variable `NEXUS_FEED_SYNC_ENABLED=true`. It is disabled without that explicit variable. Do not place the credential in source code or web environment variables.
 
