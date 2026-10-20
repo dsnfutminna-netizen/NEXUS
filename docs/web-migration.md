@@ -20,7 +20,7 @@ For an empty project, apply every file in `supabase/migrations` in timestamp ord
 
 New migrations add feedback tables and policies, an admin role check, private review notes, and an operator-only feed upsert function. They do not delete or replace existing student data. Assign an administrator through a trusted database operator after verifying the user's identity; signup metadata must never grant roles.
 
-The designated support/admin address is `dsnfutminna@datascientistsfoundation.org`. Its Auth account was created on 19 October 2026, but no profile row existed at the last check. After its owner regains access and completes onboarding, an operator can grant that profile the `admin` role after verifying ownership. An existing pilot admin can continue triaging feedback in the meantime. Do not create a role from signup metadata or replace the existing admin without confirming team access.
+The designated support/admin address is `dsnfutminna@datascientistsfoundation.org`. Its owner recovered access and completed onboarding on 20 October 2026. After verifying the Auth identity and profile, an operator assigned that exact profile the `admin` role. The previous pilot admin remains in place. Do not create a role from signup metadata or replace an existing admin without confirming team access.
 
 Supabase dashboard-issued password recovery emails use the project Site URL and may return with an implicit-flow fragment. The landing page hands that recovery session to `/reset-password`; it clears tokens from the browser address before navigating. Keep the Site URL at the production origin and include `/auth/callback` in the allowed redirects for the website-initiated PKCE flow when SMTP is enabled.
 
