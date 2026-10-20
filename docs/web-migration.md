@@ -22,6 +22,8 @@ New migrations add feedback tables and policies, an admin role check, private re
 
 The designated support/admin address is `dsnfutminna@datascientistsfoundation.org`. Its Auth account was created on 19 October 2026, but no profile row existed at the last check. After its owner regains access and completes onboarding, an operator can grant that profile the `admin` role after verifying ownership. An existing pilot admin can continue triaging feedback in the meantime. Do not create a role from signup metadata or replace the existing admin without confirming team access.
 
+Supabase dashboard-issued password recovery emails use the project Site URL and may return with an implicit-flow fragment. The landing page hands that recovery session to `/reset-password`; it clears tokens from the browser address before navigating. Keep the Site URL at the production origin and include `/auth/callback` in the allowed redirects for the website-initiated PKCE flow when SMTP is enabled.
+
 Run existing `db/test_rls.sql` and `db/test_identity_consent.sql` in the test project. Complete hosted feedback isolation checks with two student accounts and one operator-designated admin. Local PGlite checks complement this step.
 
 ## Vercel setup

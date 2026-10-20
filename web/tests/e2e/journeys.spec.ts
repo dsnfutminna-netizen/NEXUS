@@ -1,4 +1,9 @@
 import { test, expect } from "@playwright/test";
+test("invalid dashboard recovery fragment is removed before showing an error", async ({ page }) => {
+  await page.goto("/#access_token=invalid&refresh_token=invalid&type=recovery");
+  await expect(page).toHaveURL(/\/login\?notice=expired$/);
+  await expect(page.getByRole("alert")).toContainText("invalid or expired");
+});
 test("mobile onboarding saves before continuing", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/login");

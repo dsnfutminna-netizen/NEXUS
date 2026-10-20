@@ -8,9 +8,11 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Brand } from "@/components/brand";
+import { RecoveryRedirect } from "@/components/recovery-redirect";
 export default function Home() {
   return (
     <>
+      <RecoveryRedirect />
       <header className="public-nav">
         <Brand />
         <nav aria-label="Public navigation">
