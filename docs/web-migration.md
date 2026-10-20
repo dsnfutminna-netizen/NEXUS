@@ -64,7 +64,7 @@ The application accepts only these two token types and fixed internal destinatio
 
 First run `python scripts/sync_cloud_feeds.py --dry-run`. For an operator-approved sync, supply `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` through the protected environment. The RPC accepts Remotive, RemoteOK, Jobicy, and vetted Greenhouse/Lever organization boards. Add organizations to `data/opportunity_boards.json` only after verifying their public board and eligibility; the default list is empty. The worker rejects non-HTTPS links and old/expired postings, deduplicates source URLs, hides unrefreshed listings in the UI after 30 days, and deactivates them in the database after 45 days. Review listing geography and source quality before inviting testers.
 
-Two curated, evergreen student programs are seeded from official GitHub Education and AWS Educate pages, with their own source links. The team should review their eligibility and availability monthly. This curated baseline is separate from the automatically refreshed job feed.
+Seven curated, evergreen learning and leadership programs are seeded from official GitHub Education, AWS Educate, Microsoft Learn, Forage, IBM SkillsBuild, Cisco Networking Academy, and Kaggle pages, each with its own source link. The team should review their eligibility and availability monthly. This curated baseline is separate from the automatically refreshed job feed and must not be described as seven open jobs.
 
 The GitHub workflow uses environment `pilot-feed-sync`, matching secrets and repository variable `NEXUS_FEED_SYNC_ENABLED=true`. It is disabled without that explicit variable. Do not place the credential in source code or web environment variables.
 
@@ -79,4 +79,4 @@ The GitHub workflow uses environment `pilot-feed-sync`, matching secrets and rep
 7. Test on a real phone and keyboard-only desktop. Record confusion, task completion, usefulness and willingness to return.
 8. Publish the pilot contact and retention schedule, verify feed freshness, and confirm the tester invitation schedule.
 
-Existing Streamlit hosting can remain available during acceptance. Do not announce the web app as live until the deployed build, real email flow and hosted permissions pass.
+Existing Streamlit hosting can remain available during acceptance. For the approved no-SMTP pilot, verify direct signup, onboarding, and support-assisted recovery before inviting testers. Before broader release, add reliable SMTP, test email confirmation, and complete hosted permission checks.
