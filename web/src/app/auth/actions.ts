@@ -79,18 +79,22 @@ export async function authenticate(
       if (error) return { error: authError(error.code) };
 
       if (data.session && data.user) {
-        const { error: profileError } = await db.from("profiles").upsert(
-          {
-            id: data.user.id,
-            email: data.user.email,
-            full_name: name,
-          },
-          { onConflict: "id" },
-        );
-        if (profileError)
-          return {
-            error: "Could not prepare your profile. Please try signing in.",
-          };
+        const { error: profileError } = await db.from("profiles").insert({
+          id: data.user.id,
+          email: data.user.email,
+          full_name: name,
+        });
+        if (profileError) {
+          const { data: concurrent } = await db
+            .from("profiles")
+            .select("id")
+            .eq("id", data.user.id)
+            .maybeSingle();
+          if (!concurrent)
+            return {
+              error: "Could not prepare your profile. Please try signing in.",
+            };
+        }
         destination = "/onboarding";
       } else if (data.user && (data.user.identities?.length ?? 0) === 0) {
         return {
